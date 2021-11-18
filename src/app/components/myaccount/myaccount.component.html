@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="link-primary" (click)="navigateTo('home')">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a class="link-primary" (click)="navigateTo('myaccount')">My account</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+
+
+
+
+<div class="x">
+  <div class="container">
+      <form #f="ngForm" >
+
+          <h2 class="form__title">User Details</h2>
+
+            <div class="form-group pb-3 pt-3">
+                <img [src]="retrievedImage" class="pb-3" width="200px" height="150px" *ngIf="retrievedImage" />
+                <input type="file" (change)="bindingImage($event)" placeholder="select Image.." class="form-control" required>
+                <p style="color:red" *ngIf="showerror">Size must be less than 10 MB</p>
+            <!-- <button class="btn btn-primary" (click)="onUpload()">Upload</button> -->
+            </div>
+          <div class="form__input-group">
+              <input name="fname" type="text" id="fname" class="form__input" placeholder="Username" readonly  [(ngModel)]="user.fname"
+                  #fname="ngModel" pattern="^[A-z]{1}[\w.]{3,}$" />
+              <span class="help-block" *ngIf="!fname.valid && fname.touched">atleast 4 characters long and should
+                  contain only alphabets, digits, . and _</span>
+          </div>
+
+          <div class="form__input-group">
+              <input name="email" id="email" class="form__input" placeholder="Email ID" readonly type="email" email
+              [(ngModel)]="user.email" #email="ngModel" pattern="^[\w]{3,}@[A-z]{3,10}.com$" />
+              <span class="help-block" *ngIf="!email.valid && email.touched">not a valid email</span>
+          </div>
+          <div class="form__input-group">
+              <input name="lname" type="text" id="lname" class="form__input" placeholder="Full Name" required [(ngModel)]="user.lname"
+                  #lname="ngModel" pattern="^[A-z ]{3,}$" />
+              <span class="help-block" *ngIf="!lname.valid && lname.touched">atleast 3 characters long and should
+                  contain only alphabets</span>
+          </div>
+      
+          
+          <div class="row">
+              <div class="col">
+                  <div class="form__input-group">
+                      <div class="form-check">
+                          <input name="gender" type="radio" class="form-check-input" required [(ngModel)]="user.gender" value="male">Male
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="form__input-group">
+                      <div class="form-check">
+                          <input name="gender" type="radio" class="form-check-input" required [(ngModel)]="user.gender" value="female">Female
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="form__input-group">
+                      <div class="form-check">
+                          <input name="gender" type="radio" class="form-check-input" required [(ngModel)]="user.gender" value="other">Other
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col">
+                  <div class="form__input-group">
+                      <input name="dob" type="date" id="dob" class="form__input" placeholder="Date of Birth" readonly
+                      [(ngModel)]="user.dob" #dob="ngModel" (input)="validateAge()" />
+                      <span class="help-block" *ngIf="!dob.valid && dob.touched">please enter date of birth</span>
+                      <!-- <span class="help-block">{{z}}</span> -->
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="form__input-group">
+                      <input type="tel" id="phone" name="phone" class="form__input" placeholder="Phone Number"
+                          pattern="^[6-9]{1}\d{9}$" required [(ngModel)]="user.phone" #phone="ngModel" />
+                      <span class="help-block" *ngIf="!phone.valid && phone.touched">should contain only digits of
+                          length 10</span>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="form__input-group">
+                      <input name="city" type="text" id="address" class="form__input" placeholder="Address" required
+                      [(ngModel)]="user.city" #city="ngModel" pattern="^[\w ]{3,}$" />
+                      <span class="help-block" *ngIf="!city.valid && city.touched">Address required</span>
+                  </div>
+              </div>
+          </div>
+
+          <label>
+              <input class="mb-3" type="checkbox" checked="checked" name="sameadr"> Confirming that the above details are correct
+              <p class="mb-3">By creating an account you agree to our <a>Terms & Privacy</a>.</p>
+          </label>
+          
+
+          <input type="submit" name="btnSignup" value="Update Details" id="btnSignup" class="form__button" (click)="onSubmit()" />
+
+
+
+          <p class="form__text">
+              <br>
+              <a class="form__link" routerLink="/home" id="linkCreateAccount">Already updated the details? Home</a>
+          </p>
+      </form>
+  </div>
+</div>

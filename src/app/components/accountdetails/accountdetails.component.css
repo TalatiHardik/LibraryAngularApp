@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+:host /deep/ .mat-tab-group {
+  flex-direction: row;
+}
+:host /deep/ .mat-tab-header {
+  border-bottom: none;
+  height: auto;
+}
+:host /deep/ .mat-tab-header-pagination {
+  display: none !important;
+}
+:host /deep/ .mat-tab-labels {
+  flex-direction: column;
+}
+
+:host /deep/ .mat-ink-bar {
+  height: 100%;
+  left: 99.999% !important;
+  color: white;
+}
+:host /deep/ .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+
+.navbar-brand{
+  padding: .8rem;
+  color: aliceblue;
+
+}
+.navbar-light{
+  padding: .9rem;
+  color: aliceblue;
+  margin-left:45%;
+}
+
+.button{
+  margin-left:50%;
+  padding: .6rem;
+  background-color: rgba(0, 0, 0, 0.200); 
+  color: aliceblue;
+  border-color: rgba(0, 0, 0, 0.200);
+  border-radius: 10px;   
+}
+
+.mat-tab-nav-bar{
+  height: 8%;
+  color: aliceblue;
+  background-color: black;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 120px;
+}
+
+.mat-button{
+  margin-top: 0.5%;
+  background-color: rgb(33 37 41); 
+  color: white;
+  border: none;
+  position:absolute;
+  right:0;
+  margin-right: 2%;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+<div class="container">
+    <form class="form" id="login" (ngSubmit)="onSubmit()" #f="ngForm">
+        <h1 class="form__title">Login</h1>
+
+        <div class="form__input-group">
+            <input type="text" class="form__input" placeholder="Username or Email" name="userName" ngModel #userName="ngModel"
+                required>
+            <span class="text-danger" *ngIf="!userName.valid && userName.touched">Invalid Username</span>
+        </div>
+
+        <div class="form__input-group">
+            <input type="password" name="password" class="form__input" placeholder="Password" ngModel #password="ngModel"
+                required>
+            <span class="text-danger" *ngIf="!password.valid && password.touched">Invalid Password</span>
+        </div>
+
+        <input class="form__button" name="login" type="submit" value="LOGIN" [disabled]="!f.valid">
+
+        <p class="form__text">
+            <br>
+            <a (click)="navigateToFp('/forgotpassword')" class="form__link">Forgot your password?</a>
+        </p>
+
+        <p class="form__text">
+            <a class="form__link" (click)="navigateTo('register')" id="linkCreateAccount">Don't have an account?
+                Create
+                account</a>
+        </p>
+
+    </form>
+</div>

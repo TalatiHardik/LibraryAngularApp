@@ -1,0 +1,28 @@
+.container{
+    width: 300px;
+}
+.col-20 {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.col-80 {
+    flex: 0 0 80%;
+    max-width: 80%;
+}
+.confirm-button{
+    background-color: #51A351;
+    margin-right: 16px; color: #fff;
+}
+
+.close{
+    border: none;
+    background-color: white;
+    font-size: 120%;
+}
+
+.close-button{
+    text-align: right;
+    margin-right: -10px;
+    padding-right: -10px;
+}
+

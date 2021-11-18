@@ -1,0 +1,162 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="link-primary" (click)="navigateTo('home')">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a class="link-primary" (click)="navigateTo('accountdetails')">Account Details</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a class="link-primary" (click)="navigateTo('orders')">Orders</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+<h2 class="form__title">List of Orders</h2>
+
+<div class="container-fluid">
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li class="nav-item">
+    <a class="nav-link active" data-bs-toggle="tab" href="#currentorders">Active Books</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" data-bs-toggle="tab" href="#orderhistory">Returned Books</a>
+    </li>
+    
+    </ul>
+    
+    
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+    <div id="currentorders" class="tab-pane active"><br>
+    <div>
+
+    <div class="accordion" id="accordionSection">
+      <ng-container *ngFor="let orderid of rlist | paginate: { id: 'pagination1' ,  itemsPerPage: 5, currentPage: page};">
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+               [attr.data-bs-target]="'#demo'+ orderid">
+              <span class="order-first">
+                  <strong>Order Id : {{orderid}} </strong>
+              </span>
+          </button>
+          </h2>      
+        </div>
+    <!---single accordion start for looping-->
+    
+          <div class="accordion-collapse collapse" id="demo{{orderid}}" data-bs-parent="#accordionSection">
+              <div class="accordion-body">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Book Return Order</th>
+                      <th scope="col">Book Name</th>
+                      <th scope="col">Due Date</th>
+                      <th scope="col">Fine</th>
+                      <th scope="col">Return Book</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngIf="returnOrderList">
+                      <ng-container *ngFor="let order of returnOrderList">
+                    <tr *ngIf="order.orderid == orderid">
+                       <th scope="row"> {{incritr()}}</th>
+                      <td>{{order.name}}</td>
+                      <td>{{order.return_date}}</td>
+                      <td>{{order.fine_amount}}</td>
+                      <td><a class="link-primary" (click)="navigateTo('returnbook')">Return</a></td>
+                    </tr>
+                 </ng-container> 
+                </ng-container>
+                  </tbody>
+                </table>
+              </div>
+      {{resetitr()}}
+            </div>
+
+
+            
+            
+    <!---single accordion end for looping-->
+  </ng-container> 
+  <div class="text-center" *ngIf="rlist.length">
+  <pagination-controls id="pagination1" (pageChange)="page = $event"></pagination-controls>
+  </div>
+  </div>
+
+    </div>
+    </div>
+    <div id="orderhistory" class="tab-pane fade"><br>
+    <div>
+    <div class="accordion" id="accordionSection">
+      <ng-container *ngFor="let orderid of olist | paginate: { id: 'pagination2' , itemsPerPage: 4, currentPage: page1};">
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+               [attr.data-bs-target]="'#demo'+ orderid" (click)="getIndividualOrder(orderid)">
+              <span class="order-first">
+                  <strong>Order Id : {{orderid}} </strong>
+              </span>
+              <span class="order-component">
+                <strong *ngIf="isComplete(orderid)">(Partially Returned)</strong>
+            </span>
+            
+          </button>
+          </h2>      
+        </div>
+    <!---single accordion start for looping-->
+    
+          <div class="accordion-collapse collapse" id="demo{{orderid}}" data-bs-parent="#accordionSection">
+              <div class="accordion-body">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Book Return Order</th>
+                      <th scope="col">Book Name</th>
+                      <th scope="col">Transaction Date</th>
+                      <th scope="col">Fine</th>
+                      <th scope="col">Invoice</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngIf="individualOrder">
+                      <ng-container *ngFor="let order of individualOrder">
+                    <tr *ngIf="order.orderId == orderid">
+                       <th scope="row"> {{incritr()}}</th>
+                      <td>{{order.bookName}}</td>
+                      <td>{{order.dateoftransaction}}</td>
+                      <td>{{order.amount}}</td>
+                      <td><a class="link-primary download" (click)="generatInvoice(orderid,order.bookName)"><i class="fa fa-download" aria-hidden="true"></i>  Download</a></td>
+                    </tr>
+                 </ng-container> 
+                </ng-container>
+                  </tbody>
+                </table>
+              </div>
+      {{resetitr()}}
+            </div>
+
+
+            
+            
+    <!---single accordion end for looping-->
+  </ng-container> 
+  <div class="text-center" *ngIf="olist.length">
+    <pagination-controls  id="pagination2" (pageChange)="page1 = $event"></pagination-controls>
+    </div>
+  </div>
+
+    </div>
+    
+    </div>
+
+    
+  </div>
+

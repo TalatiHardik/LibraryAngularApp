@@ -1,0 +1,89 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a class="link-primary" (click)="navigateTo('home')">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a class="link-primary" (click)="navigateTo('accountdetails')">Account Details</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a class="link-primary" (click)="navigateTo('wallet')">Wallet</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="text-center">
+  </div>
+  <h2 class="form__title">Transactions</h2>
+  <h2 *ngIf="wallet != undefined">Wallet Balance:{{wallet.balance}} Rs</h2>
+  <div class="center">
+    <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add Money
+    </button>
+  </div>
+  <div>
+    <table class="table table-bordered border table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">OrderID</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Fine</th>
+          <th scope="col">Transaction</th>
+          <th scope="col">Date Of Transaction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let order of wallet.orders;">
+        <tr *ngIf="order.amount != 0">
+          <td>{{order.orderId}}</td>
+          <td *ngIf="order.transaction === 'Credited'">Amount Added</td>
+          <td *ngIf="order.transaction !== 'Credited'">{{order.bookName}}</td>
+          <td>{{order.amount}}</td>
+          <td>{{order.transaction}}</td>
+          <td>{{order.dateoftransaction}}</td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container-fluid">
+          <form (ngSubmit)="addToWallet()" #f="ngForm"  >
+            <div class="row">
+              <div class="col-75">
+              <h3>Wallet Information</h3>
+               <label for="cname">Name on Card</label>
+               <input type="text" id="cname" name="cardname" ngModel #cname="ngModel" placeholder=" Eg: Name" required>
+               <span class="help-block" *ngIf="!cname.valid && cname.touched">Name required</span>
+               <label for="ccnum">Credit card number</label>
+               <input type="text" id="ccnum" name="cardnumber" ngModel #ccnum="ngModel" required Pattern="^\d{16}$" placeholder="Eg: 1111222233334444" title="Keep Card number of 16 digits">
+               <span class="help-block" *ngIf="!ccnum.valid && ccnum.touched"> Invalid Credit card number use 16 digits</span>
+               <label for="cvv">CVV</label>
+               <input type="number" id="cvv" ngModel #cvv="ngModel"  name="cvv" placeholder="Enter CVV" Pattern = "^\d{3}$" required> 
+               <span class="help-block" *ngIf="!cvv.valid && cvv.touched">Use valid CVV number</span>
+               <label for="walletbalance">Wallet Balance</label>
+               <input type="number" id="walletbalance" [(ngModel)]="amount" required name="walletbalance" placeholder="Enter Amount"> 
+              </div>
+             </div>
+             <label>
+            <input type="checkbox" checked="checked" name="sameadr"> Confirming that all the above entered
+              details are correct.
+            </label>
+            <input type="submit" [disabled]="!f.valid" value="Add Money" class="btn">
+            </form>
+          </div>
+        </div>
+    </div>

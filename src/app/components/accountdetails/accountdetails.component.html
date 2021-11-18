@@ -1,0 +1,24 @@
+<nav mat-tab-nav-bar class="bg-dark">
+    <a class="navbar-brand" href="/home#home">LMS</a>
+    <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive" Style="color: aliceblue;">
+
+        {{link.label}}
+    </a>
+    <!-- <a mat-tab-link class="icon" (click)="navigateTo('returnbook')">Return Book</a> -->
+    <!-- <button  mat-icon-button [matMenuTriggerFor]="menu" ><mat-icon svgIcon="thumb-up"></mat-icon></button> -->
+    <mat-menu #menu="matMenu" class="matMenu">
+        <button mat-menu-item (click)="navigateTo('returnbook')">Return Book</button>
+        <button mat-menu-item (click)="navigateTo('book')">Books List</button>
+        <button mat-menu-item (click)="signOut()">Sign Out</button>
+
+    </mat-menu>
+    <div >
+            <button mat-button class="mat-button" [matMenuTriggerFor]="menu"  aria-label="Example icon button with a home icon">
+                <img [src]="retrievedImage"  style="border-radius:15px; height:35px; width:35px;" *ngIf="retrievedImage" />
+            </button>
+        </div>
+    <!-- <a mat-tab-link class="navbar-light" (click)="signOut()">Sign Out</a> -->
+</nav>  
+
+<router-outlet></router-outlet>

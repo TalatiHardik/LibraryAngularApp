@@ -1,0 +1,342 @@
+<div class="vineeth">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home#home">LMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home#about">ABOUT US</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            SERVICES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" (click)="navigateTo('book')">Books List</a></li>
+                            <li><a class="dropdown-item" (click)="navigateTo('returnbook')">Return Books</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home#testimonials">TESTIMONIALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home#contact">CONTACT</a>
+                    </li>
+                </ul>
+                <form class="d-flex mx-4">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-secondary" type="button" id="button-addon2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search mb-1" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+
+                    </div>
+                </form>
+                <div class="m-2">
+                    <a class="me-2" (click)="navigateTo('cart')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#cfcfcf"
+                            class="bi bi-cart-fill mb-1" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg><span class="badge bg-success">{{cartSize}}</span>
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <!-- <svg id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="white"
+                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg> 
+                <img *ngIf="user" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="{{user.}}" style="border-radius:15px; height:35px; width:35px;">-->
+
+                    
+                    <img [src]="retrievedImage" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:15px; height:35px; width:35px;" *ngIf="retrievedImage" />
+                    <!-- </button> -->
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" (click)="navigateTo('accountdetails/myaccount')">My Account</a>
+                        <a class="dropdown-item" (click)="navigateTo('accountdetails/orders')">Previous Orders</a>
+                        <a class="dropdown-item" (click)="navigateTo('returnbook')">Return Book</a>
+                        <a class="dropdown-item" (click)="navigateTo('accountdetails/wallet')">Wallet</a>
+                        <a class="dropdown-item" (click)="signOut()">Signout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center">
+        <div class="container text-light" style="padding-top: 75px; text-shadow: 0px 0px 15px black;">
+            <h2 style="font-size: 30px;">Welcome to the India's Largest</h2>
+            <br>
+            <h1 style="letter-spacing: 3px; font-size: 60px;">Library Management System</h1>
+        </div>
+    </div>
+</div>
+<div id="about" class="container text-center p-lg">
+    <h3>Library Management System</h3>
+    <p style="color: #a86c29">
+        <em>Why us?</em>
+    </p>
+
+    <p>
+        It must not surprise you that both the young and old are on Internet in large numbers. With the increasing
+        interest in designing and evaluating technologies for domestic life, Library Management System is a
+        beautiful resource. India's Largest Library Management System (LMS), is a software that is designed &
+        developed to manage and store books information electronically to student needs.
+        This system completely automates all your library activities by keeping a constant track of all the books
+        available with respect to every individual. Each individual user has their own login credentials to sign in.
+        If not, they have access to register themselves. You can find books in an instant,add and return books
+        quickly, and can even see the late fine charges.
+        The purpose of a library management system is to provide instant and accurate data regarding all/any type of
+        book relative to its Genre. This system saves time, reduces manual work and allows smooth flow of library
+        activities by removing chances of errors in the details.
+
+
+    </p>
+</div>
+
+<!-- Container (ABOUT US Section) end-->
+
+
+<!-- Container (Services Section) start -->
+<div id="services" class="bg-1 text-light py-4">
+    <div class="container py-4 my-4">
+        <h3 class="text-center">OUR SERVICES</h3>
+        <p style="color: #a86c29" class="text-center mt-4">
+            we are all about providing our clients,<br>
+            the most hassle free experience!
+        </p>
+        <br> <br>
+        <div class="row text-center justify-content-center">
+
+            <div class="col-lg-4">
+                <div class="thumbnail">
+                    <img src="assets/images/home/s1.jpg" alt="Policies" width="400" height="300" style="width: 100%">
+                    <p>
+                        <strong>Books List</strong>
+                    </p>
+                    <button class="button" data-bs-toggle="modal" data-bs-target="#modal1">Details</button>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="thumbnail">
+                    <img src="assets/images/home/s2.jpg" alt="Claims" width="400" height="300" style="width: 100%">
+                    <p>
+                        <strong>Return Books</strong>
+                    </p>
+                    <p></p>
+                    <button class="button" data-bs-toggle="modal" data-bs-target="#modal2">Details</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" tabindex="-1" id="modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100">About</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>There are so many books and the user can choose
+                        any book and add them to the cart.Each Book has name and genre and even rating so that the
+                        user can choose easily.After
+                        adding the book to the cart just go to the library and pick the book and enjoy reading.
+                    <p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="modal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100">About</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Using this service the user can return the books,just return before a month to avoid the
+                        late fine charges and submit the book in the library so the database can be updated to
+                        returned status.
+                        So return books within the time period and have a hassle-free experience.
+                    <p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="testimonials" class="bg-light p-lg">
+    <div class="container">
+        <h3 class="text-center">TESTIMONIALS</h3>
+        <p style="color: #a86c29" class="text-center">
+            Look at what our clients have to say about us!<br>Take a look
+            at what the best news outlets of India have to say about us!
+        </p>
+
+        <br> <br> <br> <br>
+
+        <div class="row text-center">
+            <div class="col-lg-4 col-12">
+                <div class="thumbnail">
+                    <img src="assets/images/home/toi.jpg" alt="TOI" width="350" height="300">
+                    <p>
+                        <strong>The Times of India</strong>
+                    </p>
+                    <br>
+                    <p>
+                        <em>"The Revolutunary SaaS"</em>
+                    </p>
+                    <br>
+                    <div class="rating">
+                        <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em
+                            class="fa fa-star"></em> <em class="fa fa-star"></em>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="thumbnail">
+                    <img src="assets/images/home/hindu.png" alt="HINDU" width="350" height="300">
+                    <p>
+                        <strong>The Hindu</strong>
+                    </p>
+                    <br>
+                    <p>
+                        <em>"Library has never been this SaaSsy"</em>
+                    </p>
+                    <br>
+                    <div class="rating">
+                        <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em
+                            class="fa fa-star"></em> <em class="fa fa-star"></em>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="thumbnail">
+                    <img src="assets/images/home/dc1.jpg" alt="DC" width="350" height="300"> <br>
+                    <p>
+                        <strong>Deccan Chronicle</strong>
+                    </p>
+                    <br>
+                    <p>
+                        <em>"As they say,The most hassle free LMS!"</em>
+                    </p>
+                    <br>
+                    <div class="rating">
+                        <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em class="fa fa-star"></em> <em
+                            class="fa fa-star"></em> <em class="fa fa-star"></em>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div id="contact" class="container d-flex justify-content-center p-lg">
+    <div style="width: 100vh">
+        <h3 class="text-center">
+            <strong>CONTACT US FOR QUERIES</strong>
+        </h3>
+        <br> <br>
+
+        <div class="row">
+            <div class="col-md-4">
+
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                    </svg> Jubliee
+                    Hills,Hyderabad,Telangana,India
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                    </svg> Phone:18001024544
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                    </svg> Email:
+                    LMS@gmail.com
+                </p>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-6 form-group mb-3">
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                    </div>
+                    <div class="col-sm-6 form-group mb-3">
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                    </div>
+                </div>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <button class="button pull-right" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
+            <br> <br> <br> <br>
+
+            <h2 class="text-center mt-4" style="color: #a86c29">
+                <!-- <center> -->
+                <strong>Connect with us,we make your experience
+                    hassle free!</strong>
+                <!-- <center> -->
+            </h2>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-4">
+    <p>Copyright &copy; Untitled. All rights reserved. Design By Team
+        library</p>
+
+    <p>HOME - ABOUT US - SERVICES - TESTIMONIALS - CONTACT - SIGN OUT -
+        MY ACCOUNT - SEARCH BAR - CART </p>
+    <div class="socials">
+        <em class="fa fa-facebook"></em>
+        <em class="fa fa-linkedin"></em>
+        <em class="fa fa-instagram"></em>
+        <em class="fa fa-twitter"></em>
+    </div>
+</footer>

@@ -1,0 +1,54 @@
+.card{
+    align-self: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 0.5em;
+}
+a{
+
+    cursor: pointer;
+
+}
+.fixedbutton {
+
+    position: fixed;
+
+    bottom: 1px;
+
+    right: 0px; 
+
+}
+.card-title{
+    color: black;
+}
+ .card-text{
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+img{
+    height: 35vh;
+    width: 75%;
+}
+/* 
+.card:hover{
+    height:auto;
+    width:100%;
+    opacity: 1.0;
+    filter: grayscale(0%);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-large);
+} */
+
+.vl{
+        border: 6px Solid balck;
+        height: 100%;
+}
+
+.row{
+    align-items: center;
+}
+
+.no-bold{
+    font-weight: normal;
+}
